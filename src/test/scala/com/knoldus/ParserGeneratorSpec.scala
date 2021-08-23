@@ -43,8 +43,8 @@ class ParserGeneratorSpec extends AnyFlatSpecLike with Matchers {
 
   it should "compile java files" in withTempDirectory(dir => {
     val sourceFiles = getClass.getResource("/javaSource").getPath
-    val file = parserGenerator.compileParserSource(Seq(Directory(sourceFiles)), Seq.empty, dir / File("test.jar"))
-    //ParserGenerator.compileParserSource(Seq(Directory(sourceFiles)), Directory("./result") / File("test.jar"))
+    val cl = System.getProperty("java.class.path")
+    val file = parserGenerator.compileParserSource(Seq(Directory(sourceFiles)), Seq("-cp", cl), dir / File("test.jar"))
     file.jfile should exist
   })
 
