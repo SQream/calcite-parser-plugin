@@ -5,11 +5,12 @@ Motivation:
 Configurations:
 
 1) codegenDirectory : Set a directory where fmpp template files and configurations are placed.
-    <br>The recommended directory structure is<br>
+    <br>The recommended directory structure is just like in Calcite<br>
    <pre>codegen/<br>
     templates/<br>
     includes/<br>
-    config.fmpp<br></pre>
+    config.fmpp<br>
+    default_config.fmpp<br></pre>
 
 2) outputTemplateDirectory : Directory where template file is generated.
 
