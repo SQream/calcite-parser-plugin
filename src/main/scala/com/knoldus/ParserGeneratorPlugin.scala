@@ -1,8 +1,9 @@
 package com.knoldus
 
-import sbt.Keys.{javaSource, javacOptions, streams}
+import sbt.Keys.{javaSource, javacOptions, streams, target}
 import sbt.{AutoPlugin, Compile, Setting, settingKey, taskKey}
 
+import scala.reflect.io.Path.jfile2path
 import scala.reflect.io.{Directory, File}
 
 object ParserGeneratorPlugin extends AutoPlugin {
@@ -23,6 +24,7 @@ object ParserGeneratorPlugin extends AutoPlugin {
   import autoImport._
 
   override lazy val projectSettings: Seq[Setting[_]] = Seq(
+    outputJar := File(target.value / "generatedJar" / "parser.jar"),
     generateParserTemplate := {
       val directory = codegenDirectory.value
       val configFile = directory.deepFiles.find(file => file.name.equalsIgnoreCase("config.fmpp"))
