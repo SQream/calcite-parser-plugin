@@ -5,7 +5,7 @@ lazy val root = project
   .settings(
     organization := "com.knoldus",
     name := "sql_parser_generator",
-    version := "0.1.0-SNAPSHOT",
+    version := "0.2.0-SNAPSHOT",
     scalaVersion := "2.12.14",
     libraryDependencies ++= Seq(
       "org.freemarker" % "freemarker" % "2.3.29",
