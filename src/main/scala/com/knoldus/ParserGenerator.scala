@@ -2,7 +2,6 @@ package com.knoldus
 
 import fmpp.setting.Settings
 import org.javacc.parser.Main
-import sbt.TrapExit
 import sbt.util.{CacheStoreFactory, Logger}
 
 import java.nio.charset.Charset
@@ -56,10 +55,8 @@ class ParserGenerator(logger: Logger) {
          |${args.mkString(",\n")}
          |""".stripMargin)
 
-    //Prevent system.exit
-    val securityManager = TrapExit.installManager()
-    TrapExit(Main.main(args), sbt.util.Logger.Null)
-    TrapExit.uninstallManager(securityManager)
+    Main.mainProgram(args)
+   
     logger.info("Processing Done")
 
     target
